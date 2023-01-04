@@ -15,11 +15,10 @@ const AddToDo = () => {
             event.preventDefault()
             if (title) {
                 createMutation.mutate(title)
-                console.log(title)
                 setTitle('')
             }
         },
-        [title]
+        [title, createMutation]
     )
     return (
         <form onSubmit={handleSubmit}>
