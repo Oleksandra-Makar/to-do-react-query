@@ -1,8 +1,8 @@
-import { QueryCache, QueryClient } from 'react-query'
+import { QueryClient } from 'react-query'
 import { IToDo } from '../interfaces/Todo'
-import { v4 as uuidv4 } from 'uuid'
 
 const queryClient = new QueryClient()
+export const BASE_URL = 'http://localhost:4000/todos'
 
 const todos: IToDo[] = [
     {
@@ -21,16 +21,15 @@ const getTodos = (): IToDo[] => {
     return todos
 }
 
-function addTodo(title: string): IToDo[] {
-    return [
-        ...todos,
-        {
-            id: uuidv4(),
-            title,
-            completed: false,
+const createTodo = async (text: string): Promise<IToDo> =>
+    fetch(`${BASE_URL}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
-    ]
-}
+        body: JSON.stringify({
+            text,
+        }),
+    }).then((res) => res.json())
 
-export const getTodos2 = async (): Promise<IToDo[]> => fetch('BASE_URL').then((res) => res.json())
-export { getTodos, addTodo, queryClient }
+export { getTodos, queryClient, createTodo }

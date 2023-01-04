@@ -2,8 +2,8 @@ import { Container, Typography } from '@mui/material'
 import AddToDo from './components/AddToDo'
 import ToDoList from './components/ToDoList'
 import CompletedToDosCounter from './components/CompletedToDosCounter'
-import { QueryClient, QueryClientProvider, useMutation, useQuery } from 'react-query'
-import { addTodo, getTodos, queryClient } from './store'
+import { useQuery } from 'react-query'
+import { getTodos } from './store'
 import { IToDo } from './interfaces/Todo'
 
 function App() {
