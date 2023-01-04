@@ -14,7 +14,6 @@ const AddToDo = () => {
         (event: FormEvent<EventTarget>) => {
             event.preventDefault()
             if (title) {
-                // @ts-ignore
                 createMutation.mutate(title)
                 console.log(title)
                 setTitle('')

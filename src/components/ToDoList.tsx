@@ -8,13 +8,6 @@ interface IToDoListProps {
 }
 
 const ToDoList: FC<IToDoListProps> = ({ todos }) => {
-    /*const todos: IToDo[] = [
-        {
-            id: '1',
-            title: 'Task',
-            completed: true,
-        },
-    ]*/
     return (
         <List>
             {todos!.map((todo) => (
