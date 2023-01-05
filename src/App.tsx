@@ -17,7 +17,7 @@ function App() {
                 Redux List App
             </Typography>
             <AddToDo />
-            <ToDoList todos={todos} />
+            {todos && <ToDoList todos={todos} />}
             <CompletedToDosCounter />
         </Container>
     )

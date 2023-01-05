@@ -21,6 +21,7 @@ const ToDoItem: FC<IToDoItemProps> = ({ id, completed, title }) => {
     const toggleMutation = useMutation(toggleTodoStatus, {
         onSuccess: () => queryClient.invalidateQueries('todos'),
     })
+
     const handleChangeStatus = useCallback(() => {
         toggleMutation.mutate({ id, title, completed: !completed })
     }, [id, completed, title, toggleMutation])

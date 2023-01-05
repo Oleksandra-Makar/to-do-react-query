@@ -4,13 +4,13 @@ import { IToDo } from '../interfaces/Todo'
 import { FC } from 'react'
 
 interface IToDoListProps {
-    todos?: IToDo[]
+    todos: IToDo[]
 }
 
 const ToDoList: FC<IToDoListProps> = ({ todos }) => {
     return (
         <List>
-            {todos!.map((todo) => (
+            {todos.map((todo) => (
                 <ToDoItem
                     key={todo.id}
                     id={todo.id}

@@ -20,12 +20,12 @@ const createTodo = async (title: string): Promise<IToDo> =>
         }),
     }).then((res) => res.json())
 
-export const deleteTodo = async (id: string): Promise<string> =>
+const deleteTodo = async (id: string): Promise<string> =>
     fetch(`${BASE_URL}/${id}`, {
         method: 'DELETE',
     }).then(() => id)
 
-export const toggleTodoStatus = async (todo: IToDo): Promise<IToDo> =>
+const toggleTodoStatus = async (todo: IToDo): Promise<IToDo> =>
     fetch(`${BASE_URL}/${todo.id}`, {
         method: 'PUT',
         headers: {
@@ -34,4 +34,4 @@ export const toggleTodoStatus = async (todo: IToDo): Promise<IToDo> =>
         body: JSON.stringify(todo),
     }).then((res) => res.json())
 
-export { getTodos, queryClient, createTodo }
+export { queryClient, createTodo, toggleTodoStatus, deleteTodo, getTodos }
