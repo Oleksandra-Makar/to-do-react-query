@@ -43,7 +43,12 @@ const ToDoItem: FC<IToDoItemProps> = ({ id, completed, title }) => {
                 <IconButton onClick={handleDelete}>
                     <DeleteIcon />
                 </IconButton>
-                <Checkbox edge="start" value={completed} onChange={handleChangeStatus} />
+                <Checkbox
+                    edge="start"
+                    value={completed}
+                    onChange={handleChangeStatus}
+                    checked={completed}
+                />
             </ListItemSecondaryAction>
         </ListItem>
     )

@@ -1,12 +1,14 @@
 import { Typography } from '@mui/material'
-import { useTodosCount } from '../store'
-//import { useCompletedTodosCount } from '../store'
+import { FC } from 'react'
 
-const CompletedToDosCounter = () => {
-    const comp = useTodosCount()
+interface ICompletedToDosCounterProps {
+    totalCompletedTodos: number
+}
+
+const CompletedToDosCounter: FC<ICompletedToDosCounterProps> = ({ totalCompletedTodos }) => {
     return (
         <Typography style={{ textAlign: 'center' }} variant="h4">
-            Total completed to-dos: {2}
+            Total completed to-dos: {totalCompletedTodos}
         </Typography>
     )
 }

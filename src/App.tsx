@@ -5,11 +5,16 @@ import CompletedToDosCounter from './components/CompletedToDosCounter'
 import { useQuery } from 'react-query'
 import { getTodos } from './store'
 import { IToDo } from './interfaces/Todo'
+import { useMemo } from 'react'
 
 function App() {
     const { data: todos } = useQuery<IToDo[]>('todos', getTodos, {
         initialData: [],
     })
+    const totalCompletedTodos = useMemo(
+        () => todos?.filter((todo) => todo.completed).length || 0,
+        [todos]
+    )
 
     return (
         <Container maxWidth="xs">
@@ -18,7 +23,7 @@ function App() {
             </Typography>
             <AddToDo />
             {todos && <ToDoList todos={todos} />}
-            <CompletedToDosCounter />
+            <CompletedToDosCounter totalCompletedTodos={totalCompletedTodos} />
         </Container>
     )
 }
